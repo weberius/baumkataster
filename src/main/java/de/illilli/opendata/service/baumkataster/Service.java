@@ -44,9 +44,8 @@ public class Service {
 	 * <p>
 	 * Beispiele:
 	 * <ul>
-	 * <li>/baumkataster/service/location?latlng=51.0,7.0</li>
-	 * <li>/baumkataster/service/location?latlng=51.0,7.0&geojson</li>
-	 * <li>/baumkataster/service/location?latlng=51.0,7.0&datatable</li>
+	 * <li>/baumkataster/service/location?latlng=50.959582,6.971568</li>
+	 * <li>/baumkataster/service/location?latlng=50.959582,6.971568&geojson</li>
 	 * </ul>
 	 * </p>
 	 * 
@@ -63,14 +62,19 @@ public class Service {
 
 		Facade facade = null;
 
+		request.setCharacterEncoding(Config.getProperty("encoding"));
+		response.setCharacterEncoding(Config.getProperty("encoding"));
+
 		boolean geojson = request.getParameter("geojson") != null;
 		String latlng = request.getParameter("latlng");
 		String radius = request.getParameter("radius");
 
 		if (latlng != null) {
 			if (geojson) {
+				logger.info("/location?" + latlng + "&geojson called");
 				facade = new TreeByLocatioinGeojsonFacade(latlng);
 			} else {
+				logger.info("/location?" + latlng + " called");
 				facade = new TreeByLocationFacade(latlng);
 			}
 		} else {

@@ -29,6 +29,18 @@ Die Applikation befindet sich in der Entwicklung
 
 Diese Schnittstelle wird verwendet um zu prüfen, ob der Service selbst erreichbar ist.
 
+## /baumkataster/service/location?latlng={lat,lng}
+
+Diese Schnittstelle liefert alle verzeichneten Bäume im Umkreis von 100 m zur übergebenen Koordinate im json Format zurück. 
+
+Beispiel: [/baumkataster/service/location?latlng=50.959582,6.971568](https://tom.cologne.codefor.de/baumkataster/service/location?latlng=50.959582,6.971568)
+
+## /baumkataster/service/location?latlng={lat,lng}&geojson
+
+Diese Schnittstelle liefert alle verzeichneten Bäume im Umkreis von 100 m  übergebenen Koordinate im [GeoJson](http://geojson.org/) Format zurück.
+
+Beispiel [/baumkataster/service/location?latlng=50.959582,6.971568&geojson](https://tom.cologne.codefor.de/baumkataster/service/location?latlng=50.959582,6.971568&geojson)
+
 ## /baumkataster/service/load
 
 Der Service persistiert die Daten des Baumkataster in der Datenbank. Die Daten müssen im GeoJson-Format vor im Verzeichnis resources vorliegen. Wird der Service aufgerufen, werden die bisherigen Daten gelöscht und die ggf. aktualisierten Daten werden eingelesen. Von der Kommandozeile kann die Schnittstelle mit folgendem Kommando aufgerufen werden:
