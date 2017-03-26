@@ -28,6 +28,7 @@ import org.postgis.PGgeometry;
  */
 public class BaumDTO {
 
+	private int id;
 	private int pflegeobjekt;
 	private int objekttyp;
 	private int bezirk;
@@ -43,6 +44,16 @@ public class BaumDTO {
 	private String deutsch;
 	private PGgeometry geom;
 	private String geojson;
+	private double x;
+	private double y;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getPflegeobjekt() {
 		return pflegeobjekt;
@@ -164,6 +175,22 @@ public class BaumDTO {
 		this.geojson = geojson;
 	}
 
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -180,6 +207,7 @@ public class BaumDTO {
 		result = prime * result + ((geom == null) ? 0 : geom.hashCode());
 		temp = Double.doubleToLongBits(hoehe);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + id;
 		temp = Double.doubleToLongBits(krone);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + objekttyp;
@@ -188,6 +216,10 @@ public class BaumDTO {
 		temp = Double.doubleToLongBits(stammbis);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(stammvon);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(x);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(y);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -237,6 +269,8 @@ public class BaumDTO {
 			return false;
 		if (Double.doubleToLongBits(hoehe) != Double.doubleToLongBits(other.hoehe))
 			return false;
+		if (id != other.id)
+			return false;
 		if (Double.doubleToLongBits(krone) != Double.doubleToLongBits(other.krone))
 			return false;
 		if (objekttyp != other.objekttyp)
@@ -252,15 +286,20 @@ public class BaumDTO {
 			return false;
 		if (Double.doubleToLongBits(stammvon) != Double.doubleToLongBits(other.stammvon))
 			return false;
+		if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x))
+			return false;
+		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "BaumDTO [pflegeobjekt=" + pflegeobjekt + ", objekttyp=" + objekttyp + ", bezirk=" + bezirk
-				+ ", baumbestand=" + baumbestand + ", stammvon=" + stammvon + ", stammbis=" + stammbis + ", krone="
-				+ krone + ", hoehe=" + hoehe + ", alter=" + alter + ", gattung=" + gattung + ", art=" + art + ", sorte="
-				+ sorte + ", deutsch=" + deutsch + ", geom=" + geom + ", geojson=" + geojson + "]";
+		return "BaumDTO [id=" + id + ", pflegeobjekt=" + pflegeobjekt + ", objekttyp=" + objekttyp + ", bezirk="
+				+ bezirk + ", baumbestand=" + baumbestand + ", stammvon=" + stammvon + ", stammbis=" + stammbis
+				+ ", krone=" + krone + ", hoehe=" + hoehe + ", alter=" + alter + ", gattung=" + gattung + ", art=" + art
+				+ ", sorte=" + sorte + ", deutsch=" + deutsch + ", geom=" + geom + ", geojson=" + geojson + ", x=" + x
+				+ ", y=" + y + "]";
 	}
 
 }

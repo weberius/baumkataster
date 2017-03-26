@@ -35,6 +35,54 @@ public class Service {
 
 	/**
 	 * <p>
+	 * Diese Schnittstelle liefert die Bäume im Umkreis von 100 m zum
+	 * übergebenen Punkt zurück. Es gibt die Möglichkeit die Werte als
+	 * serialisiertes Objekt, als GeoJson oder als Datatable - Objekt
+	 * zurückliefern zu lassen.
+	 * </p>
+	 * 
+	 * <p>
+	 * Beispiele:
+	 * <ul>
+	 * <li>/baumkataster/service/location?latlng=51.0,7.0</li>
+	 * <li>/baumkataster/service/location?latlng=51.0,7.0&geojson</li>
+	 * <li>/baumkataster/service/location?latlng=51.0,7.0&datatable</li>
+	 * </ul>
+	 * </p>
+	 * 
+	 * 
+	 * @return json Struktur mit einem oder mehreren Bäumen.
+	 * @throws IOException
+	 * @throws NamingException
+	 * @throws SQLException
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/location")
+	public String getLocation() throws SQLException, NamingException, IOException {
+
+		Facade facade = null;
+
+		boolean geojson = request.getParameter("geojson") != null;
+		String latlng = request.getParameter("latlng");
+		String radius = request.getParameter("radius");
+
+		if (latlng != null) {
+			if (geojson) {
+				facade = new TreeByLocatioinGeojsonFacade(latlng);
+			} else {
+				facade = new TreeByLocationFacade(latlng);
+			}
+		} else {
+			facade = new ErrorFacade("error.treebylocation");
+		}
+
+		return facade.getJson();
+
+	}
+
+	/**
+	 * <p>
 	 * Method for checking the state of the service.
 	 * </p>
 	 * 
