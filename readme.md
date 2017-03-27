@@ -51,17 +51,17 @@ Diese Schnittstelle liefert alle verwendeten Objekttypen zurück. Es gibt 14 Obj
 
 Beispiel: [/baumkataster/service/objekttypen](https://tom.cologne.codefor.de/baumkataster/service/objekttypen)
 
-## /baumkataster/service/location?latlng={lat,lng}
+## /baumkataster/service/baeume?latlng={lat,lng}
 
 Diese Schnittstelle liefert alle verzeichneten Bäume im Umkreis von 100 m zur übergebenen Koordinate im json Format zurück. 
 
-Beispiel: [/baumkataster/service/location?latlng=50.959582,6.971568](https://tom.cologne.codefor.de/baumkataster/service/location?latlng=50.959582,6.971568)
+Beispiel: [/baumkataster/service/baeume?latlng=50.959582,6.971568](https://tom.cologne.codefor.de/baumkataster/service/baeume?latlng=50.959582,6.971568)
 
-## /baumkataster/service/location?latlng={lat,lng}&geojson
+## /baumkataster/service/baeume?latlng={lat,lng}&geojson
 
 Diese Schnittstelle liefert alle verzeichneten Bäume im Umkreis von 100 m  übergebenen Koordinate im [GeoJson](http://geojson.org/) Format zurück.
 
-Beispiel [/baumkataster/service/location?latlng=50.959582,6.971568&geojson](https://tom.cologne.codefor.de/baumkataster/service/location?latlng=50.959582,6.971568&geojson)
+Beispiel [/baumkataster/service/baeume?latlng=50.959582,6.971568&geojson](https://tom.cologne.codefor.de/baumkataster/service/baeume?latlng=50.959582,6.971568&geojson)
 
 ## /baumkataster/service/load
 

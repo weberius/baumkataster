@@ -44,8 +44,8 @@ public class Service {
 	 * <p>
 	 * Beispiele:
 	 * <ul>
-	 * <li>/baumkataster/service/location?latlng=50.959582,6.971568</li>
-	 * <li>/baumkataster/service/location?latlng=50.959582,6.971568&geojson</li>
+	 * <li>/baumkataster/service/baeume?latlng=50.959582,6.971568</li>
+	 * <li>/baumkataster/service/baeume?latlng=50.959582,6.971568&geojson</li>
 	 * </ul>
 	 * </p>
 	 * 
@@ -57,8 +57,8 @@ public class Service {
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	@Path("/location")
-	public String getLocation() throws SQLException, NamingException, IOException {
+	@Path("/baeume")
+	public String getBaeume() throws SQLException, NamingException, IOException {
 
 		Facade facade = null;
 
