@@ -101,6 +101,35 @@ public class Service {
 
 	/**
 	 * <p>
+	 * Der Service liefert alle verzeichneten Objekttypen zurück.
+	 * </p>
+	 * <p>
+	 * Beispiel:
+	 * <ul>
+	 * <li><a href="http://localhost:8080/baumkataster/service/objekttypen">
+	 * /baumkataster/service/objekttypen</a></li>
+	 * </ul>
+	 * </p>
+	 * 
+	 * @return
+	 * @throws SQLException
+	 * @throws NamingException
+	 * @throws IOException
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/objekttypen")
+	public String getObjekttypen() throws SQLException, NamingException, IOException {
+
+		request.setCharacterEncoding(Config.getProperty("encoding"));
+		response.setCharacterEncoding(Config.getProperty("encoding"));
+
+		Facade facade = new ObjekttypenFacade();
+		return facade.getJson();
+	}
+
+	/**
+	 * <p>
 	 * Der Service persistiert die Daten des Baumkataster in der Datenbank. Die
 	 * Daten müssen im GeoJson-Format vor im Verzeichnis resources vorliegen.
 	 * Wird der Service aufgerufen, werden die bisherigen Daten gelöscht und die
