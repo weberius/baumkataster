@@ -19,9 +19,6 @@ Die Applikation befindet sich in der Entwicklung
 
 - Java
 - Postgres/ Postgis
-- HTML
-- JavaScript
-- Leaflet
 
 # REST Endpoints
 
