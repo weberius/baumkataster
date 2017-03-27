@@ -48,6 +48,12 @@ Diese Schnittstelle liefert alle verwendeten Objekttypen zurück. Es gibt 14 Obj
 
 Beispiel: [/baumkataster/service/objekttypen](https://tom.cologne.codefor.de/baumkataster/service/objekttypen)
 
+## /baumkataster/service/gattungen
+
+Die Schnittstelle gibt alle verzeichneten Gattungen zurück. Bäume ohne zugewiesener Gattung werden als 'null' zurückgegeben.
+	 
+Beispiel: [/baumkataster/service/gattungen](https://tom.cologne.codefor.de/baumkataster/service/gattungen)
+
 ## /baumkataster/service/baeume?latlng={lat,lng}
 
 Diese Schnittstelle liefert alle verzeichneten Bäume im Umkreis von 100 m zur übergebenen Koordinate im json Format zurück. 

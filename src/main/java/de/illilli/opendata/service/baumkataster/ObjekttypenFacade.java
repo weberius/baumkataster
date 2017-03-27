@@ -37,6 +37,8 @@ public class ObjekttypenFacade implements Facade {
 			typ.setText(messages.getString("objekttyp." + dto.getId()));
 			data.add(typ);
 		}
+		conn.close();
+
 	}
 
 	@Override

@@ -130,6 +130,37 @@ public class Service {
 
 	/**
 	 * <p>
+	 * Die Schnittstelle gibt alle verzeichneten Gattungen zurück. Bäume ohne
+	 * zugewiesener Gattung werden als 'null' zurückgegeben.
+	 * </p>
+	 * <p>
+	 * Beispiel:
+	 * <ul>
+	 * <li><a href="http://localhost:8080/baumkataster/service/gattungen">
+	 * /baumkataster/service/gattungen</a></li>
+	 * </ul>
+	 * </p>
+	 * 
+	 * @return
+	 * @throws SQLException
+	 * @throws NamingException
+	 * @throws IOException
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/gattungen")
+	public String getGattungen() throws SQLException, NamingException, IOException {
+
+		request.setCharacterEncoding(Config.getProperty("encoding"));
+		response.setCharacterEncoding(Config.getProperty("encoding"));
+
+		Facade facade = new GattungenFacade();
+		return facade.getJson();
+
+	}
+
+	/**
+	 * <p>
 	 * Der Service persistiert die Daten des Baumkataster in der Datenbank. Die
 	 * Daten müssen im GeoJson-Format vor im Verzeichnis resources vorliegen.
 	 * Wird der Service aufgerufen, werden die bisherigen Daten gelöscht und die
