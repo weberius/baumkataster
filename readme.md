@@ -29,6 +29,28 @@ Die Applikation befindet sich in der Entwicklung
 
 Diese Schnittstelle wird verwendet um zu prüfen, ob der Service selbst erreichbar ist.
 
+## /baumkataster/service/objekttypen
+
+Diese Schnittstelle liefert alle verwendeten Objekttypen zurück. Es gibt 14 Objekttypen die wie folgt unterteilt sind:
+
+0 keine Information verfügbar
+1 NN; 
+2 Kleingarten; 
+3 Sportplatz; 
+4 Kinderspielplatz; 
+5 Gebäude/Schule/Heim; 
+6 STraße/Platz; 
+7 Grünanlage; 
+8 Friedhof; 
+9 Biotopflächen; 
+10 Fluss/Bach; 
+11 Sonderanlage; 
+12 Forst; 
+13 Ausgleichsfläche; 
+14 Unbekannt
+
+Beispiel: [/baumkataster/service/objekttypen](https://tom.cologne.codefor.de/baumkataster/service/objekttypen)
+
 ## /baumkataster/service/location?latlng={lat,lng}
 
 Diese Schnittstelle liefert alle verzeichneten Bäume im Umkreis von 100 m zur übergebenen Koordinate im json Format zurück. 
@@ -53,7 +75,7 @@ Der Service persistiert die Daten des Baumkataster in der Datenbank. Die Daten m
 
     sudo -u postgres createuser -P baumkataster
     
-## Datenbank wahlergebnis anlegen
+## Datenbank baumkataster anlegen
 
     sudo -u postgres createdb -O baumkataster baumkataster
 
