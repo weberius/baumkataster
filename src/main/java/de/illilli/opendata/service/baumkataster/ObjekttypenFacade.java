@@ -22,7 +22,7 @@ import de.illilli.opendata.service.baumkataster.model.Objekttyp;
 public class ObjekttypenFacade implements Facade {
 
 	private List<Objekttyp> data = new ArrayList<Objekttyp>();
-	ResourceBundle messages;
+	private ResourceBundle messages;
 
 	public ObjekttypenFacade() throws SQLException, NamingException, IOException {
 

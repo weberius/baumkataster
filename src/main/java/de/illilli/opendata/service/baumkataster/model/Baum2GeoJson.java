@@ -3,6 +3,7 @@ package de.illilli.opendata.service.baumkataster.model;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import org.geojson.Feature;
 import org.geojson.GeoJsonObject;
@@ -16,13 +17,17 @@ import de.illilli.opendata.service.baumkataster.jdbc.BaumDTO;
 public class Baum2GeoJson {
 
 	private Feature feature = new Feature();
+	private ResourceBundle messages;
 
 	public Baum2GeoJson(BaumDTO dto) throws JsonParseException, JsonMappingException, IOException {
+
+		messages = ResourceBundle.getBundle("MessagesBundle");
+
 		feature.setId(dto.getId() + "");
 
 		Map<String, Object> properties = new HashMap<>();
 		properties.put("pflegeobjekt", dto.getPflegeobjekt());
-		properties.put("objekttyp", dto.getObjekttyp());
+		properties.put("objekttyp", messages.getString("objekttyp." + dto.getObjekttyp()));
 		properties.put("bezirk", dto.getBezirk());
 		properties.put("baumbestand", dto.getBaumbestand());
 		properties.put("stammvon", dto.getStammvon());
