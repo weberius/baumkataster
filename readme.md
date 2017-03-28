@@ -64,7 +64,7 @@ Beispiel: [/baumkataster/service/baeume/zelkova](https://tom.cologne.codefor.de/
 
 Schnittstelle, die es erlaubt, nur Bäume einer bestimmten Gattung aufzufinden. Die Rückgabe erfolgt im geojson Format.
 
-Beispiel: [/baumkataster/service/baeume/zelkova?geojson](https://tom.cologne.codefor.de/baumkataster/service/baeume/zelkova)
+Beispiel: [/baumkataster/service/baeume/zelkova?geojson](https://tom.cologne.codefor.de/baumkataster/service/baeume/zelkova?geojson)
 
 ## /baumkataster/service/baeume?latlng={lat,lng}
 
