@@ -14,24 +14,17 @@ import de.illilli.jdbc.ConnectionFactory;
 import de.illilli.jdbc.SelectListDao;
 import de.illilli.opendata.service.Facade;
 import de.illilli.opendata.service.baumkataster.jdbc.BaumDTO;
-import de.illilli.opendata.service.baumkataster.jdbc.SelectNaechsteBaeume;
+import de.illilli.opendata.service.baumkataster.jdbc.SelectBaeume;
 import de.illilli.opendata.service.baumkataster.model.Baum;
 import de.illilli.opendata.service.baumkataster.model.DTOList2Baeume;
 
-public class TreeByLocationFacade implements Facade {
+public class BaeumeFacade implements Facade {
 
 	List<BaumDTO> dtoList;
 
-	public TreeByLocationFacade(String latlng) throws SQLException, NamingException, IOException {
-
-		double lat = new LatLngFromString(latlng).getLat();
-		double lng = new LatLngFromString(latlng).getLng();
-		// der Radion steht zunaechst fest
-		double radius = 100;
-
+	public BaeumeFacade() throws SQLException, NamingException, IOException {
 		Connection conn = ConnectionFactory.getConnection();
-		// hier wird latlng getauscht
-		dtoList = new SelectListDao<BaumDTO>(new SelectNaechsteBaeume(lng, lat, radius), conn).execute();
+		dtoList = new SelectListDao<BaumDTO>(new SelectBaeume(), conn).execute();
 		conn.close();
 	}
 

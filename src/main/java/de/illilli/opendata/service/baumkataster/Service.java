@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -71,10 +72,10 @@ public class Service {
 
 		if (latlng != null) {
 			if (geojson) {
-				logger.info("/location?" + latlng + "&geojson called");
+				logger.info("/baeume?" + latlng + "&geojson called");
 				facade = new TreeByLocatioinGeojsonFacade(latlng);
 			} else {
-				logger.info("/location?" + latlng + " called");
+				logger.info("/baeume?" + latlng + " called");
 				facade = new TreeByLocationFacade(latlng);
 			}
 		} else {
@@ -83,6 +84,58 @@ public class Service {
 
 		return facade.getJson();
 
+	}
+
+	/**
+	 * <p>
+	 * Schnittstelle, die es erlaubt, nur Bäume einer bestimmten Gattung
+	 * aufzufinden.
+	 * </p>
+	 * <p>
+	 * Beispiele:
+	 * <ul>
+	 * <li><a href="http://localhost:8080/baumkataster/service/baeume/zelkova">
+	 * /baumkataster/service/baeume/zelkova</a></li>
+	 * <li><a href=
+	 * "http://localhost:8080/baumkataster/service/baeume/zelkova?geojson">
+	 * /baumkataster/service/baeume/zelkova?geojson</a></li>
+	 * </ul>
+	 * </p>
+	 * 
+	 * @param gattung
+	 * @return
+	 * @throws SQLException
+	 * @throws NamingException
+	 * @throws IOException
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/baeume/{gattung}")
+	public String getBaeume(@PathParam("gattung") String gattung) throws SQLException, NamingException, IOException {
+		Facade facade = null;
+		request.setCharacterEncoding(Config.getProperty("encoding"));
+		response.setCharacterEncoding(Config.getProperty("encoding"));
+
+		boolean geojson = request.getParameter("geojson") != null;
+		if (gattung != null) {
+			if (geojson) {
+				logger.info("/baeume/" + gattung + "?geojson called");
+				facade = new BaeumeByGattungGeojsonFacade(gattung);
+			} else {
+				logger.info("/baeume/" + gattung + " called");
+				facade = new BaeumeByGattungFacade(gattung);
+			}
+		} else {
+			if (geojson) {
+				logger.info("/baeume?geojson called");
+				facade = new BaeumeGeojsonFacade();
+			} else {
+				logger.info("/baeume called");
+				facade = new BaeumeFacade();
+			}
+		}
+
+		return facade.getJson();
 	}
 
 	/**
