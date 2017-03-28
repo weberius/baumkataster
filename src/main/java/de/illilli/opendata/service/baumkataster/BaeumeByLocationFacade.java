@@ -18,11 +18,11 @@ import de.illilli.opendata.service.baumkataster.jdbc.SelectNaechsteBaeume;
 import de.illilli.opendata.service.baumkataster.model.Baum;
 import de.illilli.opendata.service.baumkataster.model.DTOList2Baeume;
 
-public class TreeByLocationFacade implements Facade {
+public class BaeumeByLocationFacade implements Facade {
 
 	List<BaumDTO> dtoList;
 
-	public TreeByLocationFacade(String latlng) throws SQLException, NamingException, IOException {
+	public BaeumeByLocationFacade(String latlng) throws SQLException, NamingException, IOException {
 
 		double lat = new LatLngFromString(latlng).getLat();
 		double lng = new LatLngFromString(latlng).getLng();

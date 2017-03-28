@@ -45,8 +45,20 @@ public class Service {
 	 * <p>
 	 * Beispiele:
 	 * <ul>
-	 * <li>/baumkataster/service/baeume?latlng=50.959582,6.971568</li>
-	 * <li>/baumkataster/service/baeume?latlng=50.959582,6.971568&geojson</li>
+	 * <li><a href=
+	 * "http://localhost:8080/baumkataster/service/baeume?latlng=50.959582,6.971568">
+	 * /baumkataster/service/baeume?latlng=50.959582,6.971568</a></li>
+	 * <li><a href=
+	 * "http://localhost:8080/baumkataster/service/baeume?latlng=50.959582,6.971568&geojson">
+	 * /baumkataster/service/baeume?latlng=50.959582,6.971568&geojson</a></li>
+	 * <li><a href=
+	 * "http://localhost:8080/baumkataster/service/baeume?bbox=50.940692,6.951216,50.931568,6.977266">
+	 * /baumkataster/service/baeume?bbox=50.940692,6.951216,50.931568,6.977266
+	 * </a></li>
+	 * <li><a href=
+	 * "http://localhost:8080/baumkataster/service/baeume?bbox=50.940692,6.951216,50.931568,6.977266&geojson">
+	 * /baumkataster/service/baeume?bbox=50.940692,6.951216,50.931568,6.977266&
+	 * geojson</a></li>
 	 * </ul>
 	 * </p>
 	 * 
@@ -68,15 +80,24 @@ public class Service {
 
 		boolean geojson = request.getParameter("geojson") != null;
 		String latlng = request.getParameter("latlng");
+		String bbox = request.getParameter("bbox");
 		String radius = request.getParameter("radius");
 
-		if (latlng != null) {
+		if (bbox != null) {
+			if (geojson) {
+				logger.info("/baeume?" + bbox + "&geojson called");
+				facade = new BaeumeByBoundingBoxGeojsonFacade(bbox);
+			} else {
+				logger.info("/baeume?" + bbox + " called");
+				facade = new BaeumeByBoundingBoxFacade(bbox);
+			}
+		} else if (latlng != null) {
 			if (geojson) {
 				logger.info("/baeume?" + latlng + "&geojson called");
-				facade = new TreeByLocatioinGeojsonFacade(latlng);
+				facade = new BaeumeByLocationGeojsonFacade(latlng);
 			} else {
 				logger.info("/baeume?" + latlng + " called");
-				facade = new TreeByLocationFacade(latlng);
+				facade = new BaeumeByLocationFacade(latlng);
 			}
 		} else {
 			if (geojson) {

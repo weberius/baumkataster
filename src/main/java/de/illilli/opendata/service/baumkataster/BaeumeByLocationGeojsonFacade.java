@@ -17,12 +17,12 @@ import de.illilli.opendata.service.Facade;
 import de.illilli.opendata.service.baumkataster.jdbc.BaumDTO;
 import de.illilli.opendata.service.baumkataster.model.Baum2GeoJson;
 
-public class TreeByLocatioinGeojsonFacade extends TreeByLocationFacade implements Facade {
+public class BaeumeByLocationGeojsonFacade extends BaeumeByLocationFacade implements Facade {
 
 	private FeatureCollection featureCollection = new FeatureCollection();
 	private List<Feature> featureList = new ArrayList<Feature>();
 
-	public TreeByLocatioinGeojsonFacade(String latlng) throws SQLException, NamingException, IOException {
+	public BaeumeByLocationGeojsonFacade(String latlng) throws SQLException, NamingException, IOException {
 		// get Data in Superclass
 		super(latlng);
 		// collect features for featurecollection
