@@ -28,7 +28,7 @@ public class Baum2GeoJson {
 		Map<String, Object> properties = new HashMap<>();
 		properties.put("pflegeobjekt", dto.getPflegeobjekt());
 		properties.put("objekttyp", messages.getString("objekttyp." + dto.getObjekttyp()));
-		properties.put("bezirk", dto.getBezirk());
+		properties.put("bezirk", messages.getString("bezirk." + dto.getBezirk()));
 		properties.put("baumbestand", dto.getBaumbestand());
 		properties.put("stammvon", dto.getStammvon());
 		properties.put("stammbis", dto.getStammbis());
