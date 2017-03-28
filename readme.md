@@ -54,17 +54,17 @@ Die Schnittstelle gibt alle verzeichneten Gattungen zurück. Bäume ohne zugewie
 	 
 Beispiel: [/baumkataster/service/gattungen](https://tom.cologne.codefor.de/baumkataster/service/gattungen)
 
-## /baumkataster/service/{gattung}
+## /baumkataster/service/baeume/{gattung}
 
 Schnittstelle, die es erlaubt, nur Bäume einer bestimmten Gattung aufzufinden. Es wird eine json Struktur zurückgegeben.
 
-Beispiel: [/baumkataster/service/zelkova](https://tom.cologne.codefor.de/baumkataster/service/zelkova)
+Beispiel: [/baumkataster/service/baeume/zelkova](https://tom.cologne.codefor.de/baumkataster/service/baeume/zelkova)
 
-## /baumkataster/service/{gattung}?geojson
+## /baumkataster/service/baeume/{gattung}?geojson
 
 Schnittstelle, die es erlaubt, nur Bäume einer bestimmten Gattung aufzufinden. Die Rückgabe erfolgt im geojson Format.
 
-Beispiel: [/baumkataster/service/zelkova?geojson](https://tom.cologne.codefor.de/baumkataster/service/zelkova)
+Beispiel: [/baumkataster/service/baeume/zelkova?geojson](https://tom.cologne.codefor.de/baumkataster/service/baeume/zelkova)
 
 ## /baumkataster/service/baeume?latlng={lat,lng}
 
