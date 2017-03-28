@@ -79,7 +79,13 @@ public class Service {
 				facade = new TreeByLocationFacade(latlng);
 			}
 		} else {
-			facade = new ErrorFacade("error.treebylocation");
+			if (geojson) {
+				logger.info("/baeume?geojson called");
+				facade = new BaeumeGeojsonFacade();
+			} else {
+				logger.info("/baeume called");
+				facade = new BaeumeFacade();
+			}
 		}
 
 		return facade.getJson();
