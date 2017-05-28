@@ -13,7 +13,7 @@ public class SelectBaeume implements Select<BaumDTO> {
 
 	@Override
 	public String getSql() throws IOException {
-		InputStream inputStream = InsertBaum.class.getResourceAsStream(sqlFileName);
+		InputStream inputStream = SelectBaeume.class.getResourceAsStream(sqlFileName);
 		return IOUtils.toString(inputStream);
 	}
 
