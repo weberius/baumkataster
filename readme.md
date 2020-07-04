@@ -97,18 +97,6 @@ Der Service persistiert die Daten des Baumkataster in der Datenbank. Die Daten m
     curl -X PUT http://localhost:8080/baumkataster/service/load
 
 # Datenbank
-
-## DB User auf Postgres einrichten
-
-    sudo -u postgres createuser -P baumkataster
-    
-## Datenbank baumkataster anlegen
-
-    sudo -u postgres createdb -O baumkataster baumkataster
-
-## Postgis topology
-
-    sudo -u postgres psql -c "CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;" baumkataster
     
 ## Tabelle
 
@@ -152,53 +140,7 @@ Der Service persistiert die Daten des Baumkataster in der Datenbank. Die Daten m
     );
     SELECT AddGeometryColumn ('public','baumkataster','geom',4326,'POINT',2);
 
-
-## DB-Tabellen initial einrichten
-
-    psql -h localhost -U baumkataster -d baumkataster -a -f src/main/sql/baumkataster.init.sql
-
 ## Verbindungsparameter
-
-Die Datenbankverbindungsparameter werden per JNDI zur Verfügung gestellt. Dies bedeutet, dass sie im Container definiert sein müssen. Für den Online-Betrieb mit
-Tomcat sind folgende Parameter zu setzen:
-
-context.xml
-
-    <Context>
-        <ResourceLink 
-             name="jdbc/baumkataster" 
-             global="jdbc/baumkataster"
-             type="javax.sql.DataSource" />
-    </Context> 
-
-server.xml
-
-    <GlobalNamingResources>
-        <Resource 
-            name="jdbc/baumkataster"
-            auth="Container"
-            driverClassName="org.postgresql.Driver"
-            maxTotal="25" 
-            maxIdle="10"
-            username="username"
-            password="password"
-            type="javax.sql.DataSource"
-            url="jdbc:postgresql://localhost:5432/baumkataster"
-            validationQuery="select 1"/>
-
-Zu Testzwecken muss die Datei _src/test/resources/jndi.properties.template_ in _jndi.properties_ umbenannt und die Verbindungsparameter angepasst werden.
-
-# Installation
-
-Die Applikation ist eine Java-Webapplikation und setzt einen Tomcat voraus. Die Installation setzt eine Postgres/ Postgis Datenbank voraus. Die Datenstruktur dort muss bereits vorhanden sein. 
-
-    git clone https://github.com/weberius/baumkataster.git
-    cd kvbradlive
-    mvn clean install
-
-# Aufbereitung der Daten mit QGIS
-
-TODO
 
 # License
 
