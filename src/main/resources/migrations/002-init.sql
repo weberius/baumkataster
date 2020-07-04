@@ -1,0 +1,1 @@
+INSERT INTO TEST VALUES(1, 'Hello'), (2, 'World');

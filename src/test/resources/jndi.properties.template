@@ -1,6 +1,0 @@
-# jndi parameter for testing only
-servername=localhost
-portnumber=5432
-databasename=baumkataster
-user=baumkataster
-password=baumkataster
